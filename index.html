@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel ="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body class="body_container">
+    <header>
+      <div class="logo" >
+        <a onclick = "showHome()" href="index.html"><img src="logo3.png" alt="" height="56px"></a>
+
+      </div>
+      <nav id="mynav" class="nav">
+          <a id = "a" onclick = "showAbout()" href="#" class="nav_text">about</a>
+          <a id = "portfolio" href="portfolio.html">portfolio</a>
+          <a id = "s" onclick = "showServices()" href="#">services</a>
+          <a id = "c" onclick = "showContact()" href="#">contact</a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <i class="fa fa-bars"></i>
+
+      </nav>
+
+    </header>
+
+<!-- Content is inline-block (e.g OO)
+     large_text is written with h3
+
+     large large_text
+     medium large_text
+     small large_text
+     -->
+    <div class="home_PAGE home_container ">
+      <!--Row 1-->
+      <a href="portfolio.html">
+      <div class="home_block row">
+        <div class="col-xs-4 col-md-4">
+          <img src="img\drawings/Shakira 2 alt.jpg" alt="" class ="img-thumbnail float-left">
+        </div>
+        <div class="col-xs-5 col-md-5 center">
+          <h2>Illustration. <br> Web Design. <br>Animation. <br> And More.
+            <br>
+            <p style="color: blue;">(view portfolio)</p>
+
+          </h2>
+        </div>
+        <div class="col-xs-3 col-md-3">
+          <img src= "img/websites/takethis double 1.jpg"alt="" class ="img-fluid mb-4 float-left">
+        </div>
+      </div>
+      </a>
+
+      <!--Row 2-->
+        <br>
+      <div onclick="showAbout()" class="home_block row">
+        <div class="col-xs-6 col-md-4">
+          <h2>Art Knows No Bounds.<br>
+            <p style="color: blue;">(see what I'm about)</p>
+
+          </h2>
+        </div>
+        <div class="col-xs-6 col-md-8">
+          <img src="img\bg.jpg" alt="" class ="img-thumbnail float-right">
+        </div>
+      </div>
+
+      <!--Row 3-->
+        <br>
+      <div onclick="showServices()" class="home_block row">
+        <div class="col-xs-6 col-md-6">
+          <img src="img\websites\takethis double 3.jpg" alt="" class ="img-fluid mb-4 float-left">
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <h2>I can take on any anything.
+            <br> <span style="color: blue;">(see what services I can provide) </span>
+          </h2>
+        </div>
+      </div>
+
+      <!--Row 4-->
+        <br>
+      <div onclick="showContact()" class="home_block row">
+        <div class="col-xs-12 col-md-12 col-lg-12 center">
+          <h2>Interested in my services? Contact me.
+          </h2>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="about_PAGE container">
+      <div class="showcase center">
+      Here's Who I am.
+      </div>
+      <div class="content">
+        <p>My Name is Erick Atanga. I feel like one word cannot really describe who I am or what my interests
+           are; this is because I am interested in numerous things. I like to draw (whether it is photorealistic, or cartoon).
+           I've learned how to design and develop websites, whether by hand, or through CMSs like WordPress.
+           I also create animations using the Adobe Suite, and I have experience in mobile app development (utilizing
+           Java and Android Studio, for instance).</p>
+        <p><img src="bg.jpg" style="float:right; margin-left: 10px;" width="400px" alt="">If I could pick one word to describe me, I'd say that I am a designer. I've never stuck to one type of niche.
+           From as young as the age 5, I would draw concept designs for consumer electronics like computers and video game consoles,
+           illustrate famous cartoon characters, make comics, and attempt to make my own animations using Windows Movie Maker
+           and MS Paint. I even love to look at what has already been made and improve on it.
+           I have an eye for design, and I have the ambition to see this creativity through.</p>
+        <p><img src="img/bg2.jpg" style="float:left; margin-right: 10px;" width="400px"  alt="">This website - which I built from scratch utilizing multiple programming languages (HTML, CSS, JavaScript/JQuery, PHP)
+           and graphic design software - is dedicated to showing off the types of content I create - both personal projects,
+           work projects. You'll see a variety of creations (that will continue to grow as I update it), from multiple mediums,
+           each with a unique and distinct style in my portfolio. If you would like to purchase or support me, contact me. Thanks!</p>
+      </div>
+    </div>
+
+
+
+    <div class="services_PAGE container">
+      <div class="showcase center">
+        Services
+      </div><br><br>
+
+      <!--<div class="row">
+        <div class="col-sm-2">-->
+      <div class="row service_block">
+        <div class="col-xs-6 col-md-8 ">
+            <h2>Web Development</h2>
+            <p>Can create websites from scratch with Front-End: CSS, Bootsrap, HTML, PHP, JavaScript, JQuery, React</p>
+            <p>Back-End: Express, NodeJS, SQL, MySQL, MongoDB</p>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <div class="image">
+            <img src="web dev.png" alt="" class="img-thumbnail float-right">
+          </div>
+        </div>
+      </div>
+
+      <div class="row service_block">
+        <div class="col-xs-6 col-md-8 ">
+          <h2>Web Design</h2>
+          <p>UX, UI design, Can design with CMS (WordPress, Drupal).</p>
+          <p>ECommerce (Shopify)</p>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <div class="image">
+            <img src="web des.png" alt="" class="img-thumbnail float-right">
+          </div>
+        </div>
+      </div>
+
+      <div class="row service_block">
+        <div class="col-xs-6 col-md-8 ">
+          <h2>Animation</h2>
+          <p>Can produce short films and longer length animations, of any genre. Gnerally done with Adobe Animate, Adobe After Effects, Adobe Premiere Pro</p>
+          <p>Artwork done using Adobe Photoshop, Adobe Illustrator, GIMP, Inkscape</p>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <div class="image">
+            <img src="animation.png" alt="" class="img-thumbnail float-right">
+          </div>
+        </div>
+      </div>
+
+      <div class="row service_block">
+        <div class="col-xs-6 col-md-8 ">
+          <h2>Graphic Design</h2>
+          <p>Can produce brand design, fliers, concept design, data, visuals</p>
+          <p>Mediums: Adobe Illustrator, Photoshop, InDesign, Inkscape, GIMP, etc.</p>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <div class="image">
+            <img src="illustration.png" alt="" class="img-thumbnail float-right">
+          </div>
+        </div>
+      </div>
+
+      <div class="row service_block">
+        <div class="col-xs-6 col-md-8 ">
+          <h2>Illustration/Drawing</h2>
+          <p>Photorealistic(Portrait), Cartoon, Anime, Landscape, Comic/Graphic Novels</p>
+          <p>Mediums: Dry Media (Pencil, Colored Pencils), Wet Media (Paint, Copic Markers)</p>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <div class="image">
+            <img src="illustration.png" alt="" class="img-thumbnail float-right">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row service_block">
+        <div class="col-xs-6 col-md-8 ">
+          <h2>Motion Graphics</h2>
+          <p>PSAs, Simple Advertisements, of any type. </p>
+          <p>Created primarily with Adobe CS (Photoshop, Illustrator, After Effects, etc.)</p>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <div class="image">
+            <img src="motion graphic.png" alt="" class="img-thumbnail float-right">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="contact_PAGE container">
+      <div class="showcase center">
+        Contact
+      </div><br><br>
+      <div class="row content">
+        <div class="col-xs-6 col-md-6 contact_image">
+          <p><span style="font-weight: bold;">E-Mail:</span> <br> <span style="font-style: italic; font-size: 105%;">atangaerick@gmail.com</span></p><br>
+          <p><span style="font-weight: bold;">LinkedIn:</span> <br> <span style="font-style: italic; font-size: 105%;">https://www.linkedin.com/in/erick-atanga/</span></p><br>
+        </div>
+        <div class="col-xs-6 col-md-6 large_text">
+          <p>Whether you are interested in purchasing my work, requesting my services, seeking collaboration, or simply connecting, please reach out - I look forward to working with you!</p>
+        </div>
+      </div>
+    </div>
+
+
+    <footer>
+      <h4>Contact Me</h4>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script src="script.js" charset="utf-8"></script>
+
+
+  </body>
+</html>

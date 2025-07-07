@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel ="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a onclick = "showHome()" href="index.html"><img src="logo3.png" alt="" height="56px"></a>
+
+      </div>
+      <div  style="float:right;"class="port_showcase">
+        <h1><a href="portfolio.html">PORTFOLIO</a> > DATA ANALYSIS & DATA SCIENCE</h1>
+
+      </div
+    </header>
+
+<div class="graphicdesign_PAGE container">
+    <br><br>
+    <h1>Analyzing Housing Data with R</h1>
+    </br></br>
+    <p>This is a project analzying a dataset of over 4000 homes in Washington (State). I'll be using
+    R to do the following; exploratory data analysis, multiple regression, and clustering in an attempt to
+    gain some insights on the houses. (Link to the dataset:  <a href="https://www.kaggle.com/datasets/fratzcan/usa-house-prices?select=USA+Housing+Dataset.csv">https://www.kaggle.com/datasets/fratzcan/usa-house-prices?select=USA+Housing+Dataset.csv</a>)</p>
+    <p>Sometimes when analysing data, there may not always be an "interesting" or clear result. Trying hard to find
+    one can often result in skewed findings. This is an example of confirmation bias - where one already has
+    a strong opinion, and seeks to find information that supports it, instead of basing their view
+    on the objective information. </p>
+  </br></br>
+    <p>Without further adieu, lets dive in. We will start by showing the columns for this dataset.</p>
+    </b>
+    <p>
+      <ul>
+      <li><strong>Date:</strong> The date when the property was sold. This feature helps in understanding the temporal trends in property prices.</li>
+      <li><strong>Price:</strong> The sale price of the property in USD. This is the target variable we aim to predict.</li>
+      <li><strong>Bedrooms:</strong> The number of bedrooms in the property. Generally, properties with more bedrooms tend to have higher prices.</li>
+      <li><strong>Bathrooms:</strong> The number of bathrooms in the property. Similar to bedrooms, more bathrooms can increase a property’s value.</li>
+      <li><strong>Sqft Living:</strong> The size of the living area in square feet. Larger living areas are typically associated with higher property values.</li>
+      <li><strong>Sqft Lot:</strong> The size of the lot in square feet. Larger lots may increase a property’s desirability and value.</li>
+      <li><strong>Floors:</strong> The number of floors in the property. Properties with multiple floors may offer more living space and appeal.</li>
+      <li><strong>Waterfront:</strong> A binary indicator (1 if the property has a waterfront view, 0 otherwise). Properties with waterfront views are often valued higher.</li>
+      <li><strong>View:</strong> An index from 0 to 4 indicating the quality of the property’s view. Better views are likely to enhance a property’s value.</li>
+      <li><strong>Condition:</strong> An index from 1 to 5 rating the condition of the property. Properties in better condition are typically worth more.</li>
+      <li><strong>Sqft Above:</strong> The square footage of the property above the basement. This can help isolate the value contribution of above-ground space.</li>
+      <li><strong>Sqft Basement:</strong> The square footage of the basement. Basements may add value depending on their usability.</li>
+      <li><strong>Yr Built:</strong> The year the property was built. Older properties may have historical value, while newer ones may offer modern amenities.</li>
+      <li><strong>Yr Renovated:</strong> The year the property was last renovated. Recent renovations can increase a property’s appeal and value.</li>
+      <li><strong>City:</strong> The city where the property is located. Different cities have distinct market dynamics.</li>
+      <li><strong>Statezip:</strong> The state and zip code of the property. This feature provides regional context for the property.</li>
+      <li><strong>Country:</strong> The country where the property is located. While this dataset focuses on properties in Australia, this feature is included for completeness.</li>
+      </ul>
+    </p>
+    </br>
+    <p> We're going to define our dataset and view it.</p></br></br>
+    <code>
+      housing <- read.csv("USA Housing Dataset.csv") </br>
+      View(housing)
+    </code>
+    </br>
+
+    <p>As usual, we will check
+    for any duplicate data, missing columns, etc. And download any libraries to make this process easier.</p>
+  </br></br>
+    <code>
+      install.packages("dplyr")</br>
+      library(dplyr)</br>
+      housing <- na.omit(housing)</br>
+      housing <- housing  %>% distinct()</br>
+      summary(housing)
+    </code>
+    </br></br>
+    <img src="img/r_proj_images/no missing.png" alt="">
+    </br></br>
+    <p>So there were no missing values or duplicates in the data. Let's create some plots.</p>
+
+  </br>
+
+<h2>Exploratory Data Analysis</h2>
+<!-- Plots -->
+    <code>#Scatter plot by
+      plot(housing$bedrooms, housing$price, pch=16, cex=1)</code>
+
+      <p>And what we get is this:</p>
+
+      <img src="img/r_proj_images/housing price housing bedrooms plot.png" alt="">
+
+      <p>As we can see, the price tends to peak at 4-5 bedrooms, but lowers at 6. Perhaps after a certain point,
+        demand levels off? Or perhaps the 4-5 bedroom houses are in the most desirable locations?
+        It is almost normally distributed, with a slight left skew.</p>
+      </br>
+
+    <code>#Scatter plot by
+      plot(housing$sqft_living, housing$price, pch=16, cex=1)</code>
+
+      <p>And what we get is this:</p>
+
+      <img src="img/r_proj_images/housing price housing sqft plot.png" alt="">
+
+      <p>As we can see, the pricing is heavily concentrated at below 6000 sq ft, with a few outliers at either end of the data.</p>
+      </br>
+
+    <code>#Scatter plot by
+      plot(housing$yr_built, housing$price)</code>
+
+      <p>And what we get is this:</p>
+
+      <img src="img/r_proj_images/housing price housing yr plot.png" alt="">
+
+      <p>Oddly enough, the price seems to not correlate much at all with the year the house was built, save for a few minor outliers. </p>
+      </br>
+
+
+      <p>Now lets make a plot of the top 5 cities to see if we can get any quick insight from that:</p>
+
+        <img src="img/r_proj_images/top_5_cities_code.png" alt=""></br>
+
+      <img src="img/r_proj_images/top 5 cities avg price.png" alt=""></br></br
+      <p>As we can see from the plot, there isn’t a major differentiator between the top cities in this dataset.
+        As mentioned before, there are datasets where there won’t be any eye-catching trends that stick out upon surface-level inspection.
+        So we will have to do some more advanced data science to derive any insight (if at all) from this dataset.</p>
+
+      <p>One thing that we can do is multiple regression to figure out which variables influence the price of housing in this area.</p>
+
+      <h2>Data Preprocessing & Cleaning</h2>
+      <p>For starters, we have to handle categorical variables...</p>
+
+      <code>
+      unique(housing$city)
+      </br>
+      unique(housing$statezip)
+      </code>
+
+      <img src="img/r_proj_images/unique_housing.png" alt=""></br>
+      <img src="img/r_proj_images/unique_state.png" alt="">
+
+      <p>As we can see, there are 41 unique cities and 73 unique state zip codes. This is a lot, so one-hot encoding to convert these into numerical variables may be impractical.
+      This large amount of variability may also show that these columns may not be impactful. Lastly, since the cities are all in Washington, we can drop city and state as variables for now.
+
+      Perhaps we may use clustering later.
+
+      This issue also applies to dates when we run it.
+      </p>
+      <code>unique(housing$date)</code>
+
+      <p> So let’s drop city, statezip, country, and date for now. Ideally we would group date by decade.
+        But based on our prior plot, date didn't seem to make too much of an impact on the price.</p>
+      <code>
+      #Drop date, city, statezip, street, and country
+      </br>
+      new_housing <- subset(housing, select = -c(`date`, `city`, `statezip`, `street`, `country`))
+      sapply(new_housing, class)
+      </code>
+
+      <p>Now let’s begin the multiple regression. We will start by scaling the data.</p>
+
+      <code>
+      #We will install caTools in order to split our data </br>
+      install.packages('caTools')</br>
+      library(caTools)
+      </code>
+
+      <p>We split the data below in order to give the program some sample data...</p>
+
+      <code>
+      #Now we will train the model
+      set.seed(123) </br>
+      split = sample.split(new_housing$price, SplitRatio = 0.8) </br>
+      training_set = subset(new_housing, split == TRUE) </br>
+      test_set = subset(new_housing, split == FALSE)
+      </code>
+
+      <p>Lastly we will do feature scaling...</p>
+
+      <code>
+      #Feature Scaling </br>
+      ntraining_set = scale(training_set) </br>
+      ntest_set = scale(test_set) </br>
+
+      scaled_training <- ntraining_set </br>
+      scaled_training[, -which(names(ntraining_set) == "Price")] <- as.data.frame(scale(training_set[, -which(names(training_set) == "Price")]))
+      </code>
+      </br></br>
+      <h2>Multiple Regression</h2>
+      <p>Now we do the equation.</p>
+
+      <code>
+      regressor <- lm(formula = price ~., data = scaled_training ) </br>
+      summary(regressor)
+      </code></br>
+      </br><p>Output:</p>
+
+      <img src="img/r_proj_images/regressor_output.png" alt="">
+      <p>Based on the result, it seems like the regression model doesn’t fit this dataset.
+        The R^2 isn’t very high, implying that the variables do not account for the variability in pricing.
+        Additionally, the F-statistic shows that the model is not a good fit for this data.</p>
+
+
+      # Because our R^2 isn't good, we will cluster the data instead.
+      </br></br>
+      <H2>Clustering</H2>
+      <code>
+      # Select only numeric columns (excluding IDs, if any) </br>
+      housing_numeric <- training_set %>% </br>
+        select_if(is.numeric) %>% </br>
+        na.omit() </br>
+
+      # Scale the data to ensure equal weighting </br>
+      housing_scaled <- scale(housing_numeric) </br>
+
+      library(factoextra) </br>
+      fviz_nbclust(housing, kmeans, method="wss") </br>
+      </code>
+
+      <p>This generates a plot that shows where the elbow bends...</p>
+
+      <code>
+      set.seed(123)
+      kmeans_result <- kmeans(housing_scaled, centers= 3, nstart=25)
+      training_set$Cluster <- as.factor(kmeans_result$cluster)
+
+      aggregate(training_set[, c("price", "sqft_living", "bedrooms", "bathrooms", "floors")],
+                by = list(Cluster = training_set$Cluster),
+                mean)
+      </code>
+
+      </br></br>
+      <img src="img/r_proj_images/cluster table.png" alt="">
+      <img src="img/r_proj_images/cluster_plot.png" alt="">
+
+      <p>This is our cluster table. As we can see, the data can be divided into 3 clusters...</p>
+
+
+      <strong>Cluster 1 → Smaller, more affordable homes</strong>
+        <ul>
+          <li>~1,600 SqFt</li>
+          <li>3 bedrooms, ~1.7 bathrooms</li>
+          <li>Likely entry-level or smaller family homes</li>
+        </ul>
+
+      <strong>Cluster 2 → Mid-range family homes</strong>
+        <ul>
+          <li>~2,450 SqFt</li>
+          <li>~3.6 bedrooms, ~2.6 bathrooms</li>
+          <li>Likely standard suburban houses</li>
+        </ul>
+
+      <strong>Cluster 3 → Luxury or high-end homes</strong>
+        <ul>
+          <li>~3,680 SqFt</li>
+          <li>4+ bedrooms, 3+ bathrooms</li>
+          <li>Significantly higher price (~$1.19M)</li>
+          <li>Likely located in premium areas with larger lots</li>
+        </ul>
+
+
+      </br></br>
+      <H1>Results & Interpretation</H1>
+      <p>So at last, we have gotten some type of info from this dataset. This project shows the versatility and expedience of using a programming language/framework like R, as several different types of data analysis and data science are quite easy to formulate.
+</br></br>
+Cluster 3 (Luxury homes) is heavily concentrated in high-end ZIP codes, while affordable homes (Cluster 1) are more dispersed. This suggests that location plays a key role in housing prices, but features like size and number of bedrooms also influence clustering. We see a preview of this with our early plots!.
+</br>
+</br>Admittedly the findings from this dataset are not profound – finding out that the housing in Washington tends to center around starter homes, mid-range homes, and high-end homes with a few mansions should not be a startling revelation or anything like that. A more profound analysis can be find by incorporating data from around the whole country, or using demographics, so that more unique insights can be gathered.
+</br>
+</br>But it is worth it to understand the importance of not looking for results to fit a conclusion. Deeming this project “unsuccessful” since nothing interesting was found would be ill-advised, as there are times where there isn’t anything “interesting”. And that’s okay, because trying to look for something interesting may often lead to subconsciously misinterpreting results.
+Perhaps you the reader can find some more interesting results from this dataset? Here is a link:
+<a href="downloads/R_Washington_Housing.zip" download>
+  <p>R Washington Housing Project</p>
+</a>
+</p>
+
+</br></br></br>
+
+
+</div>
+
+
+
+
+
+
+  <footer>
+    <h4>Contact Me</h4>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>

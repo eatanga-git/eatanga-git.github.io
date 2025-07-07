@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel ="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a onclick = "showHome()" href="index.html"><img src="logo3.png" alt="" height="56px"></a>
+
+      </div>
+      <div  style="float:right;"class="port_showcase">
+        <h1><a href="portfolio.html">PORTFOLIO</a> >DATA ANALYSIS & DATA SCIENCE</h1>
+
+      </div
+    </header>
+
+<div class="graphicdesign_PAGE container">
+    <br><br>
+    <h1>Are Federal Student Loans Causing College Tuition Rates to Rise? Data Analysis</h1>
+    <br>
+    <strong><p><a href="https://public.tableau.com/views/CostofTuitionvsStudentLoanAmountAretheyrelated/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">Tableau Link</a></p></strong>
+    <strong><p><a href="downloads/loan-tuition-pdf.pdf">Link to PDF of PowerBI Dashboard</a></p></strong>
+    <br>
+    <p>This is a Data Analysis Project that was created to help visualize whether or not we can claim Federal Student Aid is to blame
+    for the rising costs of college tuition.</p>
+    <p>There is often much discussion about this (a lot of which is political, but I won't go into that here), so I </p>
+    figured it would be interesting to gather data and see if I can unearth some information.
+
+    I downloaded data from the National Center for Education Statistics; <a href="https://nces.ed.gov/ipeds/TrendGenerator/app/answer/8/38">average federal student aid</a>,
+    <a href="https://nces.ed.gov/ipeds/trendgenerator/app/answer/13/205">average public tuition</a>
+    for undergaduate students, and <a href="https://nces.ed.gov/ipeds/TrendGenerator/app/answer/13/206">average private tuition for undergraduate students</a>.
+
+    <br><br>
+
+    <p> I imported the data into SQL, where I merged the tables together side by side to give us a clear view.
+      I also ran queries and created tables to demonstrate the year over year increase for loans, public tuition, and private tuition.
+    </p>
+
+    <br><br>
+    <p>Finally, I exported the SQL queries as individual tables to visualize them for
+    data visualization software. Namely, Tableau and PowerBI.</p>
+    <br><br>
+    <p><a href="https://public.tableau.com/views/CostofTuitionvsStudentLoanAmountAretheyrelated/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">This is a link to the the Tableau Dashboard. (Click Here)</a></p>
+    <br><br>
+    <p>Below is a zip file containing all the project files, and the PowerBI link.</p>
+    <strong><p>The PowerBI dashbaord and the full zip project can be downloaded <a href="downloads/student-loan-tuition-project.zip">here:</a></p></strong>
+
+</div>
+
+
+
+
+
+
+  <footer>
+    <h4>Contact Me: atangaerick@gmail.com</h4>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>

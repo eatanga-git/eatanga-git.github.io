@@ -1,0 +1,34 @@
+Removed College basketball code (since it got deleted and none of these jobs use analytic solveR)
+
+<div class="col-xs-6 col-md-6">
+  <div class="row port_block">
+    <div class="col-sm-4 col-md-4 image">
+      <img src="cbb.jpg" alt="" class ="img-fluid mb-4 float-left">
+    </div>
+    <div class="col-sm-8 col-md-8 text">
+      <h2><a href="https://umass-my.sharepoint.com/personal/eatanga_umass_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Featanga%5Fumass%5Fedu%2FDocuments%2FOIM%20454%20Data%20Mining%20Final%20Project&ga=1">Data Mining: Predicting the Amount of Points a College Basketball Team Will Score</a></h2>
+      <p>• Used Analytic Solver to do Linear Regression and Neural Network operations to find out which variables were the most relevant in being able to predict the amount of points a college basketball team will score in a game.</p>
+    </div>
+  </div>
+</div>
+
+
+old header:
+Hi there, my name is Erick Atanga.
+
+I believe that what we "know" is only a small fraction of the truth. I want to figure out the whole truth - the big picture.
+
+I like to make discoveries, form new statistics, and generate new insights and ways to think about what we know. This way, people can be more informed, and make better decisions.
+
+Selected Samples
+I can make things happen at every stage of the data process - creating and querying data, cleaning and tranforming it, analyzing it and deriving new insights, and presenting findings in a way that clearly displays insgihtful information.
+
+Below is a collection of several Data Analysis and Data Science projects from my professional work, projects, and coursework alike.
+
+
+
+
+Data Science: Predicting Used Car Prices with Python
+• Used Machine Learning, data visualization, and algorithmic thinking with the Python programming language to gain insight and display data about factors that influence the price of used cars
+
+• Utilized Python Data science libraries (pandas, seaborn, statsmodels and sklearn) to create a linear regression model in order to preduct the price of a used car.
