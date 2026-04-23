@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>AI in Web Development | Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i" rel="stylesheet">
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      background-color: rgb(249, 246, 246);
+      color: #212529;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .container{
+      width: 74%;
+      margin: auto;
+    }
+
+    /* Header closer to your site */
+    header{
+      background-image: linear-gradient(rgba(255,255,255, 0.98) 53%, rgba(255,255,255, 0.0) 100%);
+      padding-top: 8px;
+      padding-left: 18px;
+      padding-right: 18px;
+      padding-bottom: 25px;
+      position: sticky;
+      position: -webkit-sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .header-inner{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .logo{
+      margin-top: 20px;
+    }
+
+    .logo img{
+      transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+    }
+
+    .logo img:hover{
+      transform: scale(1.05);
+    }
+
+    .port_showcase h1{
+      padding-top: 24px;
+      padding-right: 4px;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .port_showcase a{
+      transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+      text-decoration: none;
+      color: rgba(255, 30, 30, 1);
+    }
+
+    .port_showcase a:hover{
+      text-decoration: none;
+      color: rgba(255, 120, 10, 1);
+    }
+
+    /* Main content */
+    .case-study-page{
+      margin-top: 40px;
+      margin-bottom: 60px;
+    }
+
+    .intro-block,
+    .case-block{
+      background-color: rgb(255,255,255);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19);
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+
+    .intro-block h2{
+      font-size: 34px;
+      margin-bottom: 15px;
+      color: #212529;
+    }
+
+    .intro-block p,
+    .case-block p,
+    .case-block li{
+      font-size: 18px;
+      line-height: 1.95;
+    }
+
+    .case-block h3{
+      font-size: 28px;
+      margin-bottom: 14px;
+      color: rgba(0, 0, 255, 1);
+    }
+
+    .case-block ul{
+      padding-left: 22px;
+      margin-top: 10px;
+    }
+
+    .two-col{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 15px;
+    }
+
+    .sub-card{
+      background-color: rgba(250,250,255,1);
+      border-left: 5px solid rgba(0,0,255,0.5);
+      padding: 20px;
+    }
+
+    .sub-card h4{
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #212529;
+    }
+
+    .process-steps{
+      display: grid;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .step{
+      background-color: rgba(250,250,255,1);
+      padding: 20px;
+      border-left: 5px solid rgba(0,0,255,0.5);
+    }
+
+    .step h4{
+      font-size: 21px;
+      margin-bottom: 8px;
+      color: #212529;
+    }
+
+    .highlight{
+      color: rgba(0,0,255,1);
+      font-weight: 700;
+    }
+
+    .skill-tags{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .skill-tag{
+      background-color: rgba(0,0,255,0.08);
+      color: rgba(0,0,255,1);
+      padding: 10px 14px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    footer{
+      text-align: center;
+      color: white;
+      background-color: rgba(0,0,255, 0.5);
+      margin: 0px;
+      padding: 16px;
+    }
+
+    footer p{
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    @media screen and (max-width: 1000px){
+      .container{
+        width: 90%;
+      }
+
+      .two-col{
+        grid-template-columns: 1fr;
+      }
+
+      .intro-block h2{
+        font-size: 28px;
+      }
+
+      .case-block h3{
+        font-size: 24px;
+      }
+
+      .intro-block p,
+      .case-block p,
+      .case-block li{
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .port_showcase h1{
+        font-size: 22px;
+        padding-top: 10px;
+      }
+
+      .header-inner{
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html"><img src="logo3.png" alt="Logo" height="56"></a>
+      </div>
+
+      <div class="port_showcase">
+        <h1><a href="portfolio.html">PORTFOLIO</a> > AI IN WEB DEVELOPMENT</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="case-study-page container">
+
+    <div class="intro-block">
+      <h2>Using ChatGPT to Streamline My Graphic Design Portfolio Redesign</h2>
+      <p>
+        This page outlines how I used ChatGPT as part of my front-end workflow to improve the structure,
+        responsiveness, and presentation of my graphic design portfolio page. Rather than using AI to replace
+        development work, I used it to accelerate ideation, critique, debugging, and CSS/HTML refinement.
+      </p>
+    </div>
+
+    <div class="case-block">
+      <h3>Project Goal</h3>
+      <p>
+        My goal was to improve an existing portfolio page that already functioned, but needed a more polished
+        layout, stronger section hierarchy, better image organization, and cleaner responsiveness on smaller screens.
+        I wanted the final result to look more intentional and professional while still fitting the style of my website.
+      </p>
+    </div>
+
+    <div class="case-block">
+      <h3>How I Used AI</h3>
+      <div class="process-steps">
+        <div class="step">
+          <h4>1. Shared the existing HTML and CSS</h4>
+          <p>
+            I provided the original code so the AI could review the structure, identify weak points,
+            and work within the design system I already had.
+          </p>
+        </div>
+
+        <div class="step">
+          <h4>2. Used AI for layout critique and redesign ideas</h4>
+          <p>
+            ChatGPT helped identify issues such as the page feeling like one long stream of images,
+            weak visual separation between sections, and limited hierarchy.
+          </p>
+        </div>
+
+        <div class="step">
+          <h4>3. Applied AI suggestions selectively</h4>
+          <p>
+            I used the suggestions that fit my vision, including reorganizing content into cleaner sections,
+            using image grids, improving spacing, and refining the page structure.
+          </p>
+        </div>
+
+        <div class="step">
+          <h4>4. Used AI to help debug the main menu</h4>
+          <p>
+            I also used ChatGPT to diagnose responsiveness issues in my main navigation, including hover-driven
+            layout shifting and awkward hamburger behavior on smaller screens.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <h3>What AI Helped Me Improve</h3>
+      <div class="two-col">
+        <div class="sub-card">
+          <h4>Layout and Presentation</h4>
+          <p>
+            AI helped me explore better ways to structure the portfolio page, including grouping projects into
+            clearer sections and using grid-based presentation for images.
+          </p>
+        </div>
+
+        <div class="sub-card">
+          <h4>Responsiveness</h4>
+          <p>
+            AI helped identify CSS behaviors that were hurting the mobile experience, especially in the menu,
+            and suggested cleaner responsive patterns.
+          </p>
+        </div>
+
+        <div class="sub-card">
+          <h4>UI Refinement</h4>
+          <p>
+            I used ChatGPT to speed up the process of improving spacing, hierarchy, hover behavior,
+            and overall visual polish without having to rethink the whole page from scratch.
+          </p>
+        </div>
+
+        <div class="sub-card">
+          <h4>Workflow Efficiency</h4>
+          <p>
+            Instead of spending as much time manually testing broad redesign directions, I used AI to generate
+            targeted improvement ideas that I could evaluate and implement faster.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <h3>What This Demonstrates</h3>
+      <p>
+        This project demonstrates my ability to use <span class="highlight">AI as a practical development tool</span>
+        within a real front-end workflow. I know how to provide code context, interpret AI suggestions critically,
+        and apply them in a way that supports my design goals rather than replacing them.
+      </p>
+
+      <div class="skill-tags">
+        <div class="skill-tag">HTML</div>
+        <div class="skill-tag">CSS</div>
+        <div class="skill-tag">Responsive Design</div>
+        <div class="skill-tag">Frontend Debugging</div>
+        <div class="skill-tag">AI-Assisted Development</div>
+        <div class="skill-tag">UI Refinement</div>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <h3>Takeaway</h3>
+      <p>
+        Using ChatGPT in this project helped me streamline ideation, debugging, and design refinement while keeping
+        control over the final direction. The result was a stronger portfolio page and a concrete example of how I can
+        integrate AI into web development workflows to work faster and more effectively.
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>
+      AI-assisted web development case study by Erick Atanga
+    </p>
+  </footer>
+</body>
+</html>
