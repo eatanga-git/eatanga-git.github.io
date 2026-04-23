@@ -64,7 +64,10 @@ function PshowContact(){
     c_page.style.display = "block";
     h_page.style.display = "none";
 }
-
+function myFunction() {
+  document.getElementById("mynav").classList.toggle("responsive");
+}
+/*
 function myFunction() {
   var x = document.getElementById("mynav");
   if (x.className === "topnav") {
@@ -72,7 +75,7 @@ function myFunction() {
   } else {
     x.className = "topnav";
   }
-}
+}*/
 
 /*
 $(document).ready(function(){
