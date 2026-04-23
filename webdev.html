@@ -1,83 +1,392 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel ="stylesheet" type="text/css" href="styles.css">
-  </head>
-  <body>
-    <header>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Web Development & Web Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i" rel="stylesheet">
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      image-orientation: from-image;
+    }
+
+    body{
+      background-color: rgb(249, 246, 246);
+      color: #212529;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .container{
+      width: 74%;
+      margin: auto;
+    }
+
+    /* Header */
+    header{
+      background-image: linear-gradient(rgba(255,255,255, 0.98) 53%, rgba(255,255,255, 0.0) 100%);
+      padding-top: 8px;
+      padding-left: 18px;
+      padding-right: 18px;
+      padding-bottom: 25px;
+      position: sticky;
+      position: -webkit-sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .header-inner{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .logo{
+      margin-top: 20px;
+    }
+
+    .logo img{
+      transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+    }
+
+    .logo img:hover{
+      transform: scale(1.05);
+    }
+
+    .port_showcase h1{
+      padding-top: 24px;
+      padding-right: 4px;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .port_showcase a{
+      transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+      text-decoration: none;
+      color: rgba(255, 30, 30, 1);
+    }
+
+    .port_showcase a:hover{
+      text-decoration: none;
+      color: rgba(255, 120, 10, 1);
+    }
+
+    /* Page intro */
+    .webdev-page{
+      margin-top: 40px;
+      margin-bottom: 65px;
+    }
+
+    .intro-block{
+      background-color: rgb(255,255,255);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19);
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+
+    .intro-block h2{
+      font-size: 34px;
+      margin-bottom: 14px;
+      color: #212529;
+    }
+
+    .intro-block p{
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    /* Project cards */
+    .project-card{
+      background-color: rgb(255,255,255);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 50px 0 rgba(0, 0, 0, 0.19);
+      padding: 26px;
+      margin-bottom: 26px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 26px;
+      align-items: center;
+      transition: all ease 0.35s;
+      -webkit-transition: all ease 0.35s;
+    }
+
+    .project-card:hover{
+      transform: translateY(-4px);
+    }
+
+    .project-text h3{
+      font-size: 29px;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .project-text h3 a{
+      text-decoration: none;
+      color: rgba(0, 0, 255, 1);
+      transition: all ease 0.25s;
+    }
+
+    .project-text h3 a:hover{
+      color: rgba(96, 176, 255, 1);
+      text-decoration: none;
+    }
+
+    .project-text p{
+      font-size: 18px;
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+
+    .project-meta{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .project-tag{
+      background-color: rgba(0,0,255,0.08);
+      color: rgba(0, 0, 255, 1);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 12px;
+    }
+
+    .project-image a{
+      display: block;
+      text-decoration: none;
+    }
+
+    .project-image img{
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      display: block;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: all ease 0.35s;
+      -webkit-transition: all ease 0.35s;
+    }
+
+    .project-image img:hover{
+      filter: brightness(105%);
+    }
+
+    /* Alternating layout */
+    .project-card.reverse{
+      grid-template-columns: 1fr 1.1fr;
+    }
+
+    .project-card.reverse .project-text{
+      order: 2;
+    }
+
+    .project-card.reverse .project-image{
+      order: 1;
+    }
+
+    footer{
+      text-align: center;
+      color: white;
+      background-color: rgba(0,0,255, 0.5);
+      margin: 0px;
+      padding: 16px;
+    }
+
+    footer h4{
+      margin-bottom: 6px;
+    }
+
+    footer p{
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    @media screen and (max-width: 1000px){
+      .container{
+        width: 90%;
+      }
+
+      .project-card,
+      .project-card.reverse{
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.reverse .project-text,
+      .project-card.reverse .project-image{
+        order: initial;
+      }
+
+      .project-image img{
+        height: auto;
+        max-height: 420px;
+        object-fit: contain;
+        background-color: #f8f8f8;
+      }
+
+      .intro-block h2{
+        font-size: 28px;
+      }
+
+      .project-text h3{
+        font-size: 24px;
+      }
+
+      .intro-block p,
+      .project-text p{
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .port_showcase h1{
+        font-size: 22px;
+        padding-top: 10px;
+      }
+
+      .header-inner{
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
       <div class="logo">
-        <a onclick = "showHome()" href="index.html"><img src="logo3.png" alt="" height="56px"></a>
-
+        <a href="index.html"><img src="logo3.png" alt="Logo" height="56"></a>
       </div>
-      <div  style="float:right;"class="port_showcase">
+
+      <div class="port_showcase">
         <h1><a href="portfolio.html">PORTFOLIO</a> > WEB DEVELOPMENT & WEB DESIGN</h1>
-
-      </div
-    </header>
-
-<div class="webdev_PAGE container">
-    <br><br>
-
-    <div class="row item_block">
-      <div class="col-sm-4 col-md-4 image">
-        <img src="img/websites/TakeThis screenshot 1.PNG" alt="" class ="img-fluid mb-4 float-left">
-      </div>
-      <div class="col-sm-8 col-md-8 text">
-        <h2><a href="https://takethissports.com/">TakeThis</a></h2>
-        <p>A sports blog dedicated to offering alternative and insightful takes not usually seen
-          in the media. There is a particular emphasis on the NFL and NBA.</p>
-        <p><b>Built using Wordpress (with Elementor Plugins), with custom CSS. Hosted by BlueHost.</b></p>
       </div>
     </div>
+  </header>
 
-    <div class="row item_block">
-      <div class="col-sm-4 col-md-4 image">
-        <img src="eaportfolio_home.png" alt="" class ="img-fluid mb-4 float-left">
-      </div>
-      <div class="col-sm-8 col-md-8 text">
-        <h2><a href="https://erickaportfolio.com/eaportfolio/index.html/">erickaportfolio.com</a></h2>
-        <p>The portfolio website you are viewing right now. <b>Built from scratch using HTML, CSS, JS, and Bootstrap CSS for custom styling.</b></p>
-      </div>
+  <div class="webdev-page container">
+
+    <div class="intro-block">
+      <h2>Web Development & Web Design</h2>
+      <p>
+        A selection of websites I have built, customized, or designed across personal projects,
+        portfolio work, and startup/company use cases. These projects reflect experience with
+        HTML, CSS, JavaScript, Bootstrap, WordPress, Elementor, and custom styling.
+      </p>
     </div>
 
-    <div class="row item_block">
-        <div class="col-sm-4 col-md-4 image">
-          <img src="stockit-homepage-web.png" alt="" class ="img-fluid mb-4 float-left">
+    <div class="project-card">
+      <div class="project-text">
+        <h3><a href="https://takethissports.com/" target="_blank">TakeThis</a></h3>
+        <p>
+          A sports blog dedicated to offering alternative and insightful takes not usually seen in the media,
+          with a particular emphasis on the NFL and NBA.
+        </p>
+        <p>
+          Built using WordPress with Elementor plugins, along with custom CSS. Hosted on BlueHost.
+        </p>
+
+        <div class="project-meta">
+          <div class="project-tag">WordPress</div>
+          <div class="project-tag">Elementor</div>
+          <div class="project-tag">Custom CSS</div>
+          <div class="project-tag">Content Website</div>
         </div>
-        <div class="col-sm-8 col-md-8 text">
-          <h2><a href="https://ywt.kwi.mybluehost.me/website_4265aa55/?channelid=P99C100S1N0B3003A151D115E0000V112&utm_source=%2Fwebsite_4265aa55%2Fwp-admin%2Fadmin.php%3Fpage%3Dbluehost%23%2Fhome&utm_medium=bluehost_pluginm/">StockIt</a></h2>
-          <p>Main website for start up company. App is meant to give user information about company's stock prices.</p>
-          <p><b>Built using Wordpress with custom CSS.</b></p>
-        </div>
-     </div>
-
-    <div class="row item_block">
-      <div class="col-sm-4 col-md-4 image">
-        <img src="tbos_home.png" alt="" class ="img-fluid mb-4 float-left">
       </div>
-      <div class="col-sm-8 col-md-8 text">
-        <h2><a href="https://theboxofficescientist.com/">TheBoxOfficeScientist</a></h2>
-        <p><b>Personal pet project blog for analyzing the movie industry. Built using Wordpress.</b></p>
+
+      <div class="project-image">
+        <a href="https://takethissports.com/" target="_blank">
+          <img src="img/webdev/takethis.jpg" alt="TakeThis website preview">
+        </a>
       </div>
     </div>
 
-</div>
+    <div class="project-card reverse">
+      <div class="project-text">
+        <h3><a href="https://erickaportfolio.com/" target="_blank">erickaportfolio.com</a></h3>
+        <p>
+          The portfolio website you are currently viewing, created to showcase projects in design,
+          motion graphics, illustration, and web development.
+        </p>
+        <p>
+          Built from scratch using HTML, CSS, JavaScript, and Bootstrap CSS for styling and layout support.
+        </p>
 
+        <div class="project-meta">
+          <div class="project-tag">HTML</div>
+          <div class="project-tag">CSS</div>
+          <div class="project-tag">JavaScript</div>
+          <div class="project-tag">Bootstrap</div>
+        </div>
+      </div>
 
+      <div class="project-image">
+        <a href="https://erickaportfolio.com/" target="_blank">
+          <img src="img/webdev/portfolio.jpg" alt="Portfolio website preview">
+        </a>
+      </div>
+    </div>
 
+    <div class="project-card">
+      <div class="project-text">
+        <h3><a href="https://ywt.kwi.mybluehost.me/" target="_blank">StockIt</a></h3>
+        <p>
+          Main website for a startup company. The app is intended to provide users with information
+          about company stock prices and related content.
+        </p>
+        <p>
+          Built using WordPress with custom CSS styling.
+        </p>
 
+        <div class="project-meta">
+          <div class="project-tag">WordPress</div>
+          <div class="project-tag">Custom CSS</div>
+          <div class="project-tag">Startup Website</div>
+        </div>
+      </div>
 
+      <div class="project-image">
+        <a href="https://ywt.kwi.mybluehost.me/" target="_blank">
+          <img src="img/webdev/stockit.jpg" alt="StockIt website preview">
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card reverse">
+      <div class="project-text">
+        <h3><a href="https://theboxofficescientist.com/" target="_blank">TheBoxOfficeScientist</a></h3>
+        <p>
+          A personal blog project focused on analysis of the movie industry and box office trends.
+        </p>
+        <p>
+          Built using WordPress.
+        </p>
+
+        <div class="project-meta">
+          <div class="project-tag">WordPress</div>
+          <div class="project-tag">Blog Design</div>
+          <div class="project-tag">Media Analysis</div>
+        </div>
+      </div>
+
+      <div class="project-image">
+        <a href="https://theboxofficescientist.com/" target="_blank">
+          <img src="img/webdev/boxoffice.jpg" alt="The Box Office Scientist website preview">
+        </a>
+      </div>
+    </div>
+
+  </div>
 
   <footer>
     <h4>Contact Me</h4>
+    <p>Available for web design, front-end development, and digital creative work.</p>
   </footer>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="jquery.js"></script>
-  <script src="script.js" charset="utf-8"></script>
-  </body>
+</body>
 </html>
