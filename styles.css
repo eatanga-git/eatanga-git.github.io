@@ -43,82 +43,122 @@ footer {
   /*background-image: url("img/drawings/Serena Williams.jpg");*/
 }
 
-/*HEADER SECTION (Universal)*/
-header{
-  background-image: linear-gradient(rgba(255,255,255, 0.98) 53%, rgba(255,255,255, 0.0) 100%);
-  padding-top: 8px;
-  padding-left: 18px;
-  padding-bottom: 25px;
+/* HEADER / MAIN NAV */
+.main-header,
+header {
+  background-image: linear-gradient(rgba(255,255,255,0.98) 53%, rgba(255,255,255,0) 100%);
+  padding: 14px 18px 20px;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
- nav {
-  float: right;
-  margin-right: 8px;
-  padding: 1px 1px;
-  display: inline;
-  background-color: rgba(255, 0, 0, 0.0);
 
+.logo {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
 }
-.logo{
-  margin-top: 40px;
-  display: inline;
 
+.logo img {
+  transition: transform 0.3s ease;
 }
-.logo img{
-  transition: all ease 0.3s ;
-  -webkit-transition: all ease 0.3s;
+
+.logo img:hover {
+  transform: scale(1.05);
 }
-.logo img:hover{
-  transform: scale(1.1);
+
+nav,
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-right: 0;
+  padding: 0;
+  background-color: transparent;
 }
-nav a {
-  float: left;
-  transform-origin: bottom;
-  transition: all ease 0.3s ;
-  -webkit-transition: all ease 0.3s;
+
+nav a,
+.nav a {
+  display: inline-block;
   text-decoration: none;
-  padding: 10px 10px;
-  margin: 0px 40px;
-  font:  20px 'Noto Sans', sans-serif;
-  color: rgba(0, 0, 255, 1.0);
-    background-color: rgba(255,255,255, 0.7);
+  padding: 10px 14px;
+  margin: 0;
+  font: 20px 'Noto Sans', sans-serif;
+  color: rgba(0, 0, 255, 1);
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 
-nav a:hover{
-
+/* IMPORTANT: do NOT change font-size on hover */
+nav a:hover,
+.nav a:hover {
   text-decoration: none;
-  color:rgba(96, 176, 255, 1); 
-  padding: 10px 10px !important;
-  margin: 0px 40px !important;
+  color: rgba(96, 176, 255, 1);
+  background-color: rgba(240, 248, 255, 0.95);
+  transform: translateY(-1px);
 }
 
-nav .icon {
+nav .icon,
+.nav .icon {
   display: none;
-}
-@media screen and (max-width: 1000px) {
-  nav a {display: none;}
-  nav a.icon {
-    float: right;
-    display: block;
-  }
+  font-size: 24px;
+  line-height: 1;
 }
 
+/* MOBILE */
 @media screen and (max-width: 1000px) {
-  nav.responsive {position: relative;}
-  nav.responsive .icon {
-    position: absolute;
-    margin: 2px;
-    right: 0;
-    top: 0;
+  .main-header,
+  header {
+    align-items: flex-start;
   }
-  nav.responsive a {
-    float: none;
+
+  nav,
+  .nav {
+    width: 100%;
     display: block;
+    margin-top: 10px;
+  }
+
+  nav a,
+  .nav a {
+    display: none;
+  }
+
+  nav a.icon,
+  .nav a.icon {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    padding: 10px 12px;
+  }
+
+  nav.responsive,
+  .nav.responsive {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  nav.responsive a,
+  .nav.responsive a {
+    display: block;
+    width: 100%;
     text-align: left;
-    margin: 2px;
+    margin: 0;
+  }
+
+  nav.responsive a.icon,
+  .nav.responsive a.icon {
+    width: fit-content;
+    align-self: flex-end;
   }
 }
 @keyframes Scale {
